@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techstore-client-deployment
+  labels:
+    app: techstore
+    component: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techstore
+      component: client
+  template:
+    metadata:
+      labels:
+        app: techstore
+        component: client
+    spec:
+      containers:
+        - name: techstore-client
+          image: psharpx/techstore-client:latest
+          ports:
+            - containerPort: 3000    
+    
+    
