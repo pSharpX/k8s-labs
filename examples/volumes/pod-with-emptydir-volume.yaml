@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-emptydir-volume
+spec:
+  restartPolicy: Never
+  containers:
+    - image: ubuntu
+      name: ubuntu-container
+      volumeMounts:
+        - mountPath: /data
+          name: data-volume
+  volumens:
+    - name: data-volume
+      emptyDir: {}
