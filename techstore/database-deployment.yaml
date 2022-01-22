@@ -30,6 +30,13 @@ spec:
             - name: database-storage
               mountPath: /var/lib/postgresql/data
               subPath: ./techstore/postgres
+          resources:
+            limits:
+              memory: "1G"
+              cpu: "2"
+            requests:
+              memory: "512M"
+              cpu: "1"
           env:
             - name: POSTGRES_USER
               valueFrom:
