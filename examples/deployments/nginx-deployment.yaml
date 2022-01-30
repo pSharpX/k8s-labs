@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+    environment: production
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate #Recreate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: nginx
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: nginx
+        environment: production
+    spec:
+      containers:
+        - name: first-container
+          image: nginx
+          resources:
+            limits:
+              memory: "256M"
+              cpu: "1"
+            requests:
+              memory: "128M"
+              cpu: "0.5"
+    
